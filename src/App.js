@@ -12,12 +12,14 @@ import { fetchProducts } from "./redux/slices/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react';
 import { fetchBrands } from './redux/slices/brandsSlice';
-<<<<<<< Updated upstream
+ 
+import { fetchEla }  from './redux/slices/couponsSlice';
+import { fetchComments } from './redux/slices/commentSlice';
+import { fetchRatings } from './redux/slices/ratingSlice';
 
-=======
 import { deleteEvent, deleteEventfunction, fetchEvents } from './redux/slices/eventSlice';
->>>>>>> Stashed changes
-//------------------------
+import { fetchCategories } from './redux/slices/categorySlice';
+
 export default function App() {
   const [deletedEvent,errors] = useSelector(deleteEventfunction);
 
@@ -25,6 +27,11 @@ export default function App() {
   useEffect(()=>{
   dispatch(fetchProducts())
   dispatch(fetchBrands())
+  dispatch(fetchEvents())
+  dispatch(fetchComments())
+  dispatch(fetchRatings())
+  dispatch(fetchEla())
+  dispatch(fetchCategories())
 
   },[deletedEvent])
   

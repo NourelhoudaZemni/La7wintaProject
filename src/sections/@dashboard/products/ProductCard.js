@@ -59,13 +59,13 @@ export default function ShopProductCard({ product , deleteProduct , history }) {
  
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" image={image} alt={name} />
+      <CardMedia component="img" image={image} style={{width:"361px", height:"365px" }} alt={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          {price}DT
         </Typography>
       </CardContent>
       <CardActions>

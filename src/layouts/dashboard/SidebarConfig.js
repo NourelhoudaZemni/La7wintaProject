@@ -22,6 +22,7 @@ const sidebarConfig = [
     icon: getIcon('eva:shopping-bag-fill')
   },
   
+  
   {
     title: 'brands',
     path: '/dashboard/brand',
@@ -32,21 +33,34 @@ const sidebarConfig = [
     path: '/dashboard/category',
     icon: getIcon('bxs:category-alt')
   },
+ 
   {
-    title: 'blog',
-    path: '/dashboard/blog',
+    title: 'orders',
+    path: '/dashboard/orders',
+    icon: getIcon('bxs:truck')
+  },
+  {
+    title: 'comment',
+    path: '/dashboard/comment',
+    icon: getIcon('ep:comment')
+  },
+  {
+    title: 'rating',
+    path: '/dashboard/rating',
+    icon: getIcon('ant-design:star-filled')
+  },
+  {
+    title: 'event',
+    path: '/dashboard/event',
     icon: getIcon('eva:file-text-fill')
   },
+   
   {
-    title: 'login',
-    path: '/login',
-    icon: getIcon('eva:lock-fill')
+    title: 'coupons',
+    path: '/dashboard/coupons',
+    icon: getIcon('bxs:coupon')
   },
-  {
-    title: 'register',
-    path: '/register',
-    icon: getIcon('eva:person-add-fill')
-  },
+   
   {
     title: 'Not found',
     path: '/404',
