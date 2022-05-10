@@ -1,3 +1,5 @@
+ 
+
 import * as React from 'react';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
@@ -9,20 +11,6 @@ import Form from 'react-bootstrap/Form';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { mockImgAvatar } from '../utils/mockImages';
-
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4
-};
-// material
 import {
   Card,
   Table,
@@ -39,15 +27,26 @@ import {
   TablePagination
 } from '@mui/material';
 // components
-import Page from '../components/Page';
-import Label from '../components/Label';
+import Page from '../components/Page'; 
 import Scrollbar from '../components/Scrollbar';
 import Iconify from '../components/Iconify';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
 import {queryApi} from '../utils/queryApi'
-//
-import USERLIST from '../_mocks_/user';
+// 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4
+};
+// material
+
 
 // ----------------------------------------------------------------------
 

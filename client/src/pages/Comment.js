@@ -9,20 +9,15 @@ import Form from 'react-bootstrap/Form';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { mockImgAvatar } from '../utils/mockImages';
-
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4
-};
-// material
+import Page from '../components/Page';
+import Label from '../components/Label';
+import Scrollbar from '../components/Scrollbar';
+import Iconify from '../components/Iconify';
+import SearchNotFound from '../components/SearchNotFound';
+import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
+import {queryApi} from '../utils/queryApi'
+//
+import USERLIST from '../_mocks_/user';
 import {
   Card,
   Table,
@@ -38,16 +33,22 @@ import {
   TableContainer,
   TablePagination
 } from '@mui/material';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4
+};
+// material
+
 // components
-import Page from '../components/Page';
-import Label from '../components/Label';
-import Scrollbar from '../components/Scrollbar';
-import Iconify from '../components/Iconify';
-import SearchNotFound from '../components/SearchNotFound';
-import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
-import {queryApi} from '../utils/queryApi'
-//
-import USERLIST from '../_mocks_/user';
+
 
 // ----------------------------------------------------------------------
 
@@ -177,10 +178,8 @@ export default function Comment() {
     const [res, err] = await queryApi('comment/upload/', formData, 'POST',true);
       if (res.data.message === "Comment added") {
                       setImage("");
-                      setName("");
-                      setErrors('');
-                    }
-                    dispatch(addProduct(res))
+                      setName(""); 
+                    } 
   };
 
   return (
