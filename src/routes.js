@@ -18,6 +18,8 @@ import Rating from './pages/Rating';
 import Category from './pages/Category';
 import NotFound from './pages/Page404'; 
 import Order from './pages/Order';
+import Auction from './pages/Auction';
+
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -37,6 +39,8 @@ export default function Router() {
         { path: 'orders', element: <Order /> },
         { path: 'category', element: <Products /> },
         { path: 'blog', element: <Blog /> },
+        { path: 'auction', element: <Auction /> },
+
         { path: 'event', element: <Event /> }
       ]
     },

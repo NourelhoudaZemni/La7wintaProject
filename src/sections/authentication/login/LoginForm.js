@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import { useState } from 'react';
+import axios from "axios";
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
 // material
@@ -19,6 +20,9 @@ import Iconify from '../../../components/Iconify';
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
+  
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -27,16 +31,39 @@ export default function LoginForm() {
     password: Yup.string().required('Password is required')
   });
 
+  /////////
+   const login = async (input) => {
+     console.log(input)
+    try {
+        
+        const config = {
+            header: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+          
+    } catch (error ) {
+          console.error('There was an error!', error);
+      }
+    }
+
+  ///
+  const handleLogin = (e) => {
+    e.preventDefault()
+     login({email, password})
+
+
+  }
+  ////
+
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
-      remember: true
+      password: ''
     },
     validationSchema: LoginSchema,
-    onSubmit: () => {
-      navigate('/dashboard', { replace: true });
-    }
+    
   });
 
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
@@ -47,7 +74,7 @@ export default function LoginForm() {
 
   return (
     <FormikProvider value={formik}>
-      <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+      <Form onSubmit={handleLogin} autoComplete="off" noValidate  >
         <Stack spacing={3}>
           <TextField
             fullWidth
@@ -57,14 +84,19 @@ export default function LoginForm() {
             {...getFieldProps('email')}
             error={Boolean(touched.email && errors.email)}
             helperText={touched.email && errors.email}
+            
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <TextField
             fullWidth
             autoComplete="current-password"
             type={showPassword ? 'text' : 'password'}
-            label="Password"
-            {...getFieldProps('password')}
+            
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password" 
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -79,17 +111,7 @@ export default function LoginForm() {
           />
         </Stack>
 
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
-          <FormControlLabel
-            control={<Checkbox {...getFieldProps('remember')} checked={values.remember} />}
-            label="Remember me"
-          />
-
-          <Link component={RouterLink} variant="subtitle2" to="#" underline="hover">
-            Forgot password?
-          </Link>
-        </Stack>
-
+        
         <LoadingButton
           fullWidth
           size="large"

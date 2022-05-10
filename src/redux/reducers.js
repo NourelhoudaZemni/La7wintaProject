@@ -11,10 +11,13 @@ import {    combineReducers    } from "redux";
  import donations from './slices/donationSlice';
  import comments from "./slices/commentSlice";
  import ratings from "./slices/ratingSlice";
+ import auctions from "./slices/auctionSlice";
+
+ 
 
 
     const reducers = combineReducers({
     products,brands,events,users, orders, coupons,category,
-    donations,comments,ratings
+    donations,comments,ratings,auctions
     });
     export default reducers;

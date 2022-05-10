@@ -30,6 +30,7 @@ router.post(
   userController.getUsersByTime
 );
 router.post("/login", userController.signIn);
+ 
 //router.post("/login", userController.login);
 router.post("/register", userController.signUp);
 router.post("/check-role", userController.checkRole);

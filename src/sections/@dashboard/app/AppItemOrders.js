@@ -42,7 +42,7 @@ export default function AppItemOrders({ donations }) {
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Iconify icon="ant-design:windows-filled" width={24} height={24} />
+        <Iconify icon="fa6-solid:box-open" width={24} height={24} />
       </IconWrapperStyle>
       <Typography variant="h3">{fShortenNumber(donations.donations.length)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>

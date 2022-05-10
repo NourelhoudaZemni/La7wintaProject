@@ -109,7 +109,7 @@ exports.getLikesCount = async (req,res) => {
 
     }
 };
-/////////////
+///////////////////////////////////////////////////
 exports.getAll = async(req,res) => {
     searchValue=req.query.searchValue
     try {
@@ -120,7 +120,7 @@ exports.getAll = async(req,res) => {
     }
     
 }
-/////////////////////////////////////////////////
+//////////////////////////////////////////////////
 
 exports.getUserEvent = async(req,res) => {
     const idUser = req.query.idUser; 

@@ -40,7 +40,7 @@ export default function AppNewUsers({ events }) {
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Iconify icon="ant-design:apple-filled" width={24} height={24} />
+        <Iconify icon="material-symbols:event" width={24} height={24} />
       </IconWrapperStyle>
       <Typography variant="h3">{fShortenNumber(events.length)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>

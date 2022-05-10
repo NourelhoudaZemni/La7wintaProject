@@ -1,6 +1,35 @@
 const Product = require("../models/Product");
 const User = require("../models/User.js");
 const { cloudinary } = require("../utils/cloudinary");
+const puppeteer = require('puppeteer');
+
+exports.productRecommendation = async (req, res) => {
+
+try{
+  const browser = await puppeteer.launch({headless : true});
+  const page = await browser.newPage();
+  await page.goto(`https://thrift.plus/collections/${req.params.gender}s-high-street-all?narrow=%5B%5B%22Colour%22%2C%22Colour_${req.params.colour}%22%5D%5D&sort_by=creation_date`)
+  const products = await page.evaluate(()=> {
+   let elements = document.querySelectorAll('li.isp_grid_product')
+   let product = [];
+   for((element) of elements) {
+     product.push({
+       _id: element.querySelector('span.isp_product_price.money').textContent,
+      image : element.querySelector('img.isp_product_image').src,
+      name : element.querySelector('div.isp_product_title').textContent,
+      price : element.querySelector('span.isp_product_price.money').textContent,
+     }) 
+   }
+   return product.splice(0,4);
+  })
+  console.log(products)
+  await browser.close();
+  res.send(products)
+}catch(err) {
+  res.send(err)
+}
+
+}
 
 exports.fetchProducts = async (req, res) => {
   try {
@@ -115,13 +144,13 @@ exports.fetchProduct = async (req, res) => {
 exports.fetchProductByUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const products = await Product.find({ user: id });
+    const product = await Product.find({ user: id });
 
-    res.status(200).json({id,
-      products,
+    res.status(200).json({
+      product,
     });
   } catch (err) {
-    res.status(500);
+    res.send(err.message);
   }
 };
 
@@ -244,6 +273,7 @@ exports.getUserInfo = async(req,res)=>{
     res.status(500).json({msg:'something went wrong.'})
     }
   }
+
   exports.get3PromoProducts = async (req, res) => {
     try {
       const products = await Product.find().sort({discount:-1}).limit(3);

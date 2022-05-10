@@ -138,6 +138,39 @@ module.exports.signIn = async (req, res) => {
     
 };
 //////////////////////////////////////////////////////////
+module.exports.signInDash = async (req, res) => {
+  try{
+    const { email, password } = req.body 
+    const user = await User.findOne({ email });
+    
+    if (user && (await user.matchPassword(password))&&user.status) {
+      console.log(user)
+      res.json({
+        '_id': user._id,
+        'name': user.name,
+        'username':user.username,
+        'profile_picture':user.profile_picture,
+        'email': user.email,
+        'isAdmin': user.isAdmin,
+        'token': createToken(user._id),
+        'phone': user.phone,
+        'location': user.location,
+      });
+    } else {
+      if(!user.status){
+        res.status(401).send({message:"Account has been deleted"})
+      }
+      if(user.status && user.matchPassword(password))
+      res.status(401).send({message:"Invalid Email or Password"});
+      throw new Error("Invalid Email or Password");
+    }
+  }
+  catch(err){
+    res.send(err)
+  } 
+    
+};
+///////////////////
 exports.updateFile = async (req, res) => {
   console.log("first", req.file)
   console.log("bodyyy", req.body)

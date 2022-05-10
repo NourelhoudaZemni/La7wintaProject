@@ -49,8 +49,7 @@ export const fetchEla = () => async (dispatch) => {
     console.log("nour avant");
 const [res, error] = await queryApi("coupon/readCoupon");
 console.log("nour apres");
-console.log(res);
-//aamlt console log bch nchouf si  yodkhol lel methode aqueryapi wela la
+console.log(res); 
 if (error) {
 dispatch(setErrors(error));
 } else {

@@ -9,20 +9,6 @@ import Form from 'react-bootstrap/Form';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { mockImgAvatar } from '../utils/mockImages';
-
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4
-};
-// material
 import {
   Card,
   Table,
@@ -48,6 +34,20 @@ import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashbo
 import {queryApi} from '../utils/queryApi'
 //
 import USERLIST from '../_mocks_/user';
+
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4
+};
+// material
 
 // ----------------------------------------------------------------------
 

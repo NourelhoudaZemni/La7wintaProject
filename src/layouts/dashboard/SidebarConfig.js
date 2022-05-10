@@ -45,6 +45,19 @@ const sidebarConfig = [
     icon: getIcon('ep:comment')
   },
   {
+    title: 'Auctions',
+    path: '/dashboard/Auction',
+    icon: getIcon('bxs:category-alt')
+  },
+  
+  {
+    title: 'login',
+    path: '/login',
+    icon: getIcon('eva:lock-fill')
+  },
+  
+
+  {
     title: 'rating',
     path: '/dashboard/rating',
     icon: getIcon('ant-design:star-filled')

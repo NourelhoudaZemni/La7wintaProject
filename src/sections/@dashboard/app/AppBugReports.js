@@ -41,7 +41,7 @@ console.log(users)
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Iconify icon="ant-design:bug-filled" width={24} height={24} />
+        <Iconify icon="material-symbols:supervised-user-circle" width={24} height={24} />
       </IconWrapperStyle>
       <Typography variant="h3">{fShortenNumber(users.length)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>

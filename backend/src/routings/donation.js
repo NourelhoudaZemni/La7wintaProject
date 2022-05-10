@@ -1,7 +1,6 @@
 const express= require('express');
 const router = express.Router();
-const {check, validationResult} = require ('express-validator');
-const { restart } = require('nodemon');   
+const {check, validationResult} = require ('express-validator'); 
 const {Donation} = require('../models/Donation');
 const Events =require('../models/Event');
 const cloudinary = require("../utils/cloudinary");
