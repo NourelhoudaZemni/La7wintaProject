@@ -183,11 +183,8 @@ export default function Rating() {
 
     const [res, err] = await queryApi('rating/upload/', formData, 'POST',true);
       if (res.data.message === "Rating added") {
-                      setImage("");
-                      setName("");
-                      setErrors('');
-                    }
-                    dispatch(addProduct(res))
+                      setImage(""); 
+                    } 
   };
 
   return (
@@ -274,7 +271,7 @@ export default function Rating() {
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={isItemSelected}
-                              onChange={(event) => handleClick(event, title)}
+                              onChange={(event) => handleClick(event)}
                             />
                           </TableCell>
                           <TableCell component="th" scope="row" padding="none">
