@@ -178,9 +178,8 @@ export default function Comment() {
       if (res.data.message === "Comment added") {
                       setImage("");
                       setName("");
-                      setErrors('');
-                    }
-                    dispatch(addProduct(res))
+                      
+                    } 
   };
 
   return (

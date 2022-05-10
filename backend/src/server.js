@@ -36,7 +36,7 @@ const client = new OAuth2Client(process.env.REACT_APP_GOOGLE_CLIENT_ID);
 
 const app = express();
 
-production && app.use(express.static(path.join(__dirname, "../client/build")));
+production && app.use(express.static(path.join(__dirname, "../build")));
 app.use('/uploads',express.static('uploads'))
 app.use(bodyParser.json());
 app.use(
