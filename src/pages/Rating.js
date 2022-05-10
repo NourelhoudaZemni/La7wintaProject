@@ -185,10 +185,8 @@ export default function Rating() {
     const [res, err] = await queryApi('rating/upload/', formData, 'POST',true);
       if (res.data.message === "Rating added") {
                       setImage("");
-                      setName("");
-                      setErrors('');
-                    }
-                    dispatch(addProduct(res))
+                      setName(""); 
+                    } 
   };
 
   return (
