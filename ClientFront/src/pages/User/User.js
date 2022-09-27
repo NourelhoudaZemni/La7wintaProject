@@ -34,31 +34,15 @@ function User({ match, history }) {
 
   const [userId, setUserId] = useState()
 
-  const locationOptions=[ 
-  {label:"Bizerte",value:"Bizerte"},
- 
-  {label:"Gafsa",value:"Gafsa"},
-  {label:"Jandouba",value:"Jandouba"},
-  {label:"Kairaouen",value:"Kairaouen"},{label:"Kef",value:"Kef"},
-  
-  {label:"Kasserine",value:"Kasserine"},{label:"Kebili",value:"Kebili"},
- 
-  {label:"Mahdia",value:"Mahdia"},
-  {label:"Manouba",value:"Manouba"},{label:"Monastir",value:"Monastir"},
-  {label:"Medenine",value:"Medenine"},
- {label:"Nabeul",value:"Nabeul"},{label:"Zaghouane",value:"Zaghouane"},
- 
- {label:"Sidi bouzid",value:"Sidi bouzid"},{label:"Sfax",value:"Sfax"},{label:"Siliana",value:"Siliana"},
- {label:"Sousse",value:"Sousse"},
- {label:"Tozeur",value:"Tozeur"},{label:"Tataouine",value:"Tataouine"}, {label:"Tunis",value:"Tunis"}
-]
+  const locationOptions=[{label:"Tunis",value:"Tunis"},{label:"Nabeul",value:"Nabeul"}]
   const { user, users, successDisable, profileUpdated} = useSelector(
     
     (state) => state.userReducer
   );
   const [location, setLocation] = useState(user.location);
   const [profilPicture, setProfilPicture] = useState(user.profile_picture)
- 
+
+  // console.log("user profile", user.name);
 
   const dispatch = useDispatch();
 
@@ -162,7 +146,8 @@ dispatch(updateProfile(id,form))
   }
 
 
-  useEffect(() => { 
+  useEffect(() => {
+   
     setLocation(user.location)
     setUsername(user.username) 
     setName(user.name)
@@ -354,7 +339,64 @@ pauseOnHover
 
       
 
-       
+      {
+        user.isAdmin ?
+          <>
+            <div className="container page-title-content p-3">
+              <h3>List of users :</h3>
+            </div>
+
+            <Table
+              striped
+              bordered
+              hover
+              responsive
+              className="table-sm user-area-wrap ptb-100 container"
+            >
+              <thead>
+                <tr className="user-header">
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Delete</th>
+                  <th>Disable</th>
+                </tr>
+              </thead>
+              <tbody style={{ textAlign: "center" }}>
+                {users ? (
+                  users.map((users) => (
+                    <tr key={users._id}>
+                      <td>{users.name}</td>
+                      <td>{users.email}</td>
+                      <td>
+                        <Button
+                          variant="btn-default"
+                          className="btn-sm"
+                          onClick={() => deleteHandler(users._id)}
+                        >
+                          <i className="fas fa-trash-alt"></i>
+                        </Button>
+                      </td>
+                      <td>
+                        <Button
+                          variant=""
+                          className="btn-sm"
+                          value={status}
+                          onChange={(e) => setStatus(e.target.value)}
+                          onClick={disableHandler}
+                        // onChange={() => disableHandler(users._id, users.status)}
+                        >
+                          <i className="fas fa-ban"></i>
+                        </Button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <h1>No Users</h1>
+                )}
+              </tbody>
+            </Table>
+          </>
+          : null}
     </div>
   );
 }

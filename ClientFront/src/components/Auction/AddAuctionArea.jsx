@@ -37,7 +37,7 @@ function AddAuctionArea() {
    
 
     setErrors(validate(formData));
-    axios.post("http://127.0.0.1:5000/auction/add",formData ,history.push('/auction')
+    axios.post("http://127.0.0.1:5000/auction/upload",formData ,history.push('/auction')
     ,{ headers : {
       "Content-Type": "multipart/form-data",
     } ,

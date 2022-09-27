@@ -106,16 +106,6 @@ window.location.reload()
   })
   })
 }
-function converTimer(d) {
-  var h = Math.floor(d / 360000);
-  var m = Math.floor(d % 3600 / 60);
-  var s = Math.floor(d % 3600 % 60);
-
-  var hDisplay = h > 0 ? h + (h == 1 ? " hour " : " hours") : "";
-  var mDisplay = m > 0 ? m + (m == 1 ? " minute" : " minutes") : "";
-  var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
-return hDisplay+mDisplay+sDisplay;  
-}
 
 // function updateAuction(id){
 //   history.push(`/update-auction/`+id);
@@ -158,7 +148,6 @@ return hDisplay+mDisplay+sDisplay;
 
   //   setProductImages(data.public_id);
   // };
- 
 
   return (
     <section className="shop-area bg-ffffff pt-50 pb-50">
@@ -179,8 +168,7 @@ return hDisplay+mDisplay+sDisplay;
               <div className="single-shop-products">
                 <div className="shop-products-image">
                   <Link to={`/auctions-room/${auction._id}`}>
-                  <img src={auction.image} alt={auction.name}         style= {{marginBottom: "5px",marginLeft: "1px", width:"50rem", height:'16rem'}}
-  />
+                  <img src={auction.image} alt={auction.name} width="300"  />
 
                   </Link>
                   <div className="tag">New</div>
@@ -213,7 +201,7 @@ return hDisplay+mDisplay+sDisplay;
                 Start Price: <span>{auction.Price}</span>
  
                   <diV>
-                 Duration <span>{converTimer(auction.duration)}</span>
+                 Duration <span>{auction.duration}</span>
                   </diV>   
           
                 </div>

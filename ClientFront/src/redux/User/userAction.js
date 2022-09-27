@@ -65,7 +65,7 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
         const { data } = await axios.post('user/login', { email, password }, config)
-        console.log(data) 
+        console.log(data)
         localStorage.setItem('token', JSON.stringify(data.token))
         localStorage.setItem('user', JSON.stringify(data))
         history.push("/profile")
@@ -73,7 +73,9 @@ export const login = (email, password) => async (dispatch) => {
         dispatch({
             type: USER_LOGIN_SUCCESS,
             payload: data
-        }) 
+        })
+        //? remove if crash 
+        window.location.reload()
 
 
     } catch (error) {

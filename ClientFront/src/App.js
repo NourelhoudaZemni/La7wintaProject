@@ -237,7 +237,7 @@ function App() {
               <Route path="/blog-details" component={BlogDetails} />
               <Route path="/coming-soon" component={ComingSoon} />
               {token && <Route path="/add-product" component={AddProduct} />}
-         
+              {userToken && <Route path="/profile" component={User}  />}
               {token && <Route path="/products" component={Products} />}
               {token && <Route path="/reset" component={ResetPassword} />}
               {!token && <Route path="/login" component={Login} />}
@@ -247,7 +247,7 @@ function App() {
               
               <Route exact path="/AllEvents"  component={EventList} />
               {token && <Route exact path="/MyEvents"  component={MyEvents} />}
-     <Route  path="/profile" component={User}  />
+ 
               <Route exact path="/Event/:id" component={Event} />
               <Route exact path="/EditEvent/:id" component={EditEvent} />
               
@@ -256,13 +256,14 @@ function App() {
               <Route path='/admin' element={<Admin />} />
               <Route exact path="/forget-password" component={ForgetPassword} />
               <Route exact path="/reset-password/:id" component={PasswordResetArea} />
-              {token && <Route path="/add-auction" component={AddAuction} />}
+              {  token && <Route path="/add-auction" component={AddAuction} />}
              <Route path="/auction" component={Auctions} />
            <Route path="/MyAuctions" component={MyAuctions} />
                <Route  path="/auctions-room/:auctionId" component={AuctionsDetails} />
               {  token &&   <Route  path="/update-auction/:auctionId" component={EditAuctionArea} />}
 
-               
+              
+  {/* {!token && <Redirect to='/login'  />} */}
             </Switch>
           </div>
         </CartContext.Provider>
