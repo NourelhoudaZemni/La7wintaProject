@@ -4,12 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node src/server",
-    "server": "node src/server",
+    "start": "nodemon src/server",
+    "server": "nodemon src/server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "format": "prettier --write src/**/*",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefux client"
+    "format": "prettier --write src/**/*"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +32,6 @@
     "mongoose": "^5.11.11",
     "multer": "^1.4.2",
     "nodemailer": "^6.7.3",
-    "nodemon": "^2.0.16",
     "puppeteer": "^13.6.0",
     "react-accessible-accordion": "^3.3.4",
     "react-bootstrap": "^1.4.3",
@@ -46,6 +44,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "nodemon": "^2.0.7",
     "prettier": "^2.2.1"
   }
 }

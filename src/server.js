@@ -11,7 +11,7 @@ const ratingRoutes = require("./routings/rating");
 const commentRoutes = require("./routings/comment");
 const auctionRoutes = require("./routings/auction");
 const chatbotRoutes = require("./routings/chatbot");
- 
+
 //////////Coupon
 const orderRoutes = require("./routings/order");
 const couponRoutes = require("./routings/coupon");
@@ -102,9 +102,9 @@ app.use("/event", eventRoutes);
 app.use(cors());
 ///////////////////////GET
 ///////////////////////////
-app.use(express.static(path.join(__dirname, "client", "build")))
+
 production && (
-  app.get("*", (req, res) => {
+  app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   })
 )
@@ -162,12 +162,4 @@ io.on("connection",(socket)=>{
     socket.broadcast.emit("ee");
   })
 })
-///////////////////////////////////////////
-  
-  // Set static folder
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
 app.listen(process.env.PORT || 5000);
